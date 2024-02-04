@@ -5,6 +5,7 @@ a Python script that lets you automagically capture all playable nikke's "flavor
 ## How?
 
 0. Install requirements. There are probably some missing but I think that's it
+    - [Get Tesseract-OCR here!](https://tesseract-ocr.github.io/tessdoc/Downloads)
 1. Open NIKKE. (be sure to close the launcher to prevent window name confusion!)
     - Don't be on full screen, you're gonna need multiple windows up
     - I'd recommend NIKKE to atleast take up all of your desktop's height. The text recognition part for the name may mess up on smaller window sizes.
