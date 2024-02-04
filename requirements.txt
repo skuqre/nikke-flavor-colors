@@ -1,0 +1,9 @@
+# Tesseract is required for text-recognition
+# on names and all that.
+pytesseract
+opencv-python
+
+# Window capturing
+pygetwindow
+pyscreenshot
+pyautogui
