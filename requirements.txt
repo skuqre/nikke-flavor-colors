@@ -7,3 +7,7 @@ opencv-python
 pygetwindow
 pyscreenshot
 pyautogui
+
+# Other
+python-dotenv
+pywin32
