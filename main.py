@@ -56,15 +56,23 @@ def main():
         cs.save(__file__ + '\..\\color.png')
 
         # get color
-        pixels = Image.open(__file__ + '\..\\color.png').load()
+        pixels = Image.open(__file__ + '\..\\color.png').getcolors()
+        color = None
+        maxcount = 0
+
+        # get all colors
+        for c in pixels:
+            if maxcount < c[0]:
+                color = c[1]
+                maxcount = c[0]
 
         text = pytesseract.image_to_string(Image.open(__file__ + '\..\\name.png'), config='--psm 7')
-        print("WHO: " + text, "COLOR: " + str(pixels[0, 0]))
+        print("WHO: " + text, "\n", "COLOR: " + str('#%02x%02x%02x' % color))
 
         if text == FIRST_NIKKE:
             break
         else:
-            color_table[text.strip()] = '#%02x%02x%02x' % pixels[0, 0]
+            color_table[text.strip()] = '#%02x%02x%02x' % color
 
         if FIRST_NIKKE == None:
             FIRST_NIKKE = text
@@ -75,7 +83,7 @@ def main():
         with open(__file__ + '\..\\colors.json', 'w') as f:
             json.dump(color_table, f, indent='\t')
 
-        sleep(0.1)
+        sleep(0.3)
 
     print(color_table)
 
