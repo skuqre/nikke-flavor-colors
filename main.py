@@ -20,6 +20,8 @@ def main():
     FIRST_NIKKE = None
     SECONDS_BEFORE_START = 5
 
+    rei_passed = False
+
     color_table = {}
 
     while SECONDS_BEFORE_START > 0:
@@ -67,7 +69,14 @@ def main():
                 maxcount = c[0]
 
         text = pytesseract.image_to_string(Image.open(__file__ + '\..\\name.png'), config='--psm 7')
-        print("WHO: " + text, "\n", "COLOR: " + str('#%02x%02x%02x' % color))
+
+        if text.strip() == "Rei":
+            if rei_passed:
+                text = "Rei Ayanami"
+            else:
+                rei_passed = True
+        
+        print("WHO: " + text + "\nCOLOR: " + str('#%02x%02x%02x' % color))
 
         if text == FIRST_NIKKE:
             break
